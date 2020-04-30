@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="${ctx}/resources/css/public.css" media="all" />
 </head>
 <body class="loginBody">
-<form class="layui-form" id="loginFrm" method="post" action="${ctx }/login/login.action">
+<form class="layui-form" id="loginFrm" method="post" action="${ctx}/login/login.action">
     <div class="login_face"><img src="${ctx}/resources/images/face.jpg" class="userAvatar"></div>
     <div class="layui-form-item input-item">
         <label for="userName">用户名</label>
@@ -34,8 +34,8 @@
     <div class="layui-form-item">
         <button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
     </div>
-    <div class="layui-form-item layui-row" style="text-align: center;color: red;">
-        ${error }
+    <div class="layui-form-item layui-row" style="text-align: center; color: red;">
+        ${error}
         <!-- 	<a href="javascript:;" class="seraph icon-qq layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>
             <a href="javascript:;" class="seraph icon-wechat layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>
             <a href="javascript:;" class="seraph icon-sina layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a> -->
