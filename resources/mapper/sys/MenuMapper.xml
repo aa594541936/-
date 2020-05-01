@@ -125,4 +125,23 @@
       available = #{available,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <!-- 查询所有菜单 -->
+  <select id="queryAllMenu" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    <where>
+      <if test="title != null and title != ''">
+        and title like concat("%", #{title}, "%");
+      </if>
+      <if test="available != null">
+        and available = #{available}
+      </if>
+      <if test="id != null">
+        and (id = #{id} or pid = #{id})
+      </if>
+    </where>
+  </select>
+  
 </mapper>

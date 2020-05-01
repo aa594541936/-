@@ -104,12 +104,12 @@
 <div class="site-tree-mobile"><i class="layui-icon">&#xe602;</i></div>
 <div class="site-mobile-shade"></div>
 
-<script type="text/javascript" src="${ctx }/resources/layui/layui.js"></script>
-<script type="text/javascript" src="${ctx }/resources/js/cache.js"></script>
+<script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/cache.js"></script>
 <script type="text/javascript">
     var $,tab,dataStr,layer;
     layui.config({
-        base : "${ctx }/resources/js/"
+        base : "${ctx}/resources/js/"
     }).extend({
         "bodyTab" : "bodyTab"
     })
@@ -119,8 +119,8 @@
         $ = layui.$;
         layer = parent.layer === undefined ? layui.layer : top.layer;
         tab = layui.bodyTab({
-            openTabNum : "50",  //最大可打开窗口数量
-            url : "${ctx }/resources/json/navs.json" //获取菜单json地址
+            openTabNum : "50",  // 最大可打开窗口数量
+            url : "${ctx}/menu/loadIndexLeftMenuJson.action" // 获取菜单列表的json地址
         });
 
         //通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据

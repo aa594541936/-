@@ -1,7 +1,7 @@
 package com.sxt.sys.controller;
 
 
-import com.sxt.sys.constast.SysConstast;
+import com.sxt.sys.constant.SysConstant;
 import com.sxt.sys.domain.User;
 import com.sxt.sys.service.UserService;
 import com.sxt.sys.utils.WebUtils;
@@ -38,7 +38,7 @@ public class LoginController {
             //记录登陆日志 向sys_login_log里面插入数据
             return "system/main/index";
         } else {
-            model.addAttribute("error", SysConstast.USER_LOGIN_ERROR_MSG);
+            model.addAttribute("error", SysConstant.USER_LOGIN_ERROR_MSG);
             return "system/main/login";
         }
     }
