@@ -1,6 +1,7 @@
 package com.sxt.sys.service;
 
 import com.sxt.sys.domain.Menu;
+import com.sxt.sys.utils.DataGridView;
 import com.sxt.sys.vo.MenuVo;
 
 import java.util.List;
@@ -17,5 +18,12 @@ public interface MenuService {
      * 根据用户id查询用户的可用菜单
      */
     List<Menu> queryMenuByUserIdForList(MenuVo menuVo, Integer userId);
+
+    /**
+     * 查询所有菜单
+     * @param menuVo
+     * @return
+     */
+    DataGridView queryAllMenu(MenuVo menuVo);
     
 }

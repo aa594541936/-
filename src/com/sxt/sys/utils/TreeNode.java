@@ -1,12 +1,17 @@
 package com.sxt.sys.utils;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreeNode {
 
     private Integer id;
+    
+    @JsonProperty("parentId")
     private Integer pid;
+    
     private String title;
     private String icon;
     private String href;

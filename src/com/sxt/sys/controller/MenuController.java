@@ -4,6 +4,7 @@ import com.sxt.sys.constant.SysConstant;
 import com.sxt.sys.domain.Menu;
 import com.sxt.sys.domain.User;
 import com.sxt.sys.service.MenuService;
+import com.sxt.sys.utils.DataGridView;
 import com.sxt.sys.utils.TreeNode;
 import com.sxt.sys.utils.TreeNodeBuilder;
 import com.sxt.sys.utils.WebUtils;
@@ -54,6 +55,36 @@ public class MenuController {
             nodes.add(new TreeNode(id, pid, title, icon, href, spread, target));
         }
         return TreeNodeBuilder.builder(nodes, 1);
+    }
+    
+    
+    
+    @RequestMapping("/loadMenuManagerLeftTreeJson")
+    public DataGridView loadMenuManagerLeftTreeJson(MenuVo menuVo) {
+        menuVo.setAvailable(SysConstant.AVAILABLE_TRUE); // 只查询可用的
+        List<Menu> list = this.menuService.queryAllMenuForList(menuVo);
+        
+        List<TreeNode> nodes = new ArrayList<>();
+
+        // 把list里的数据放到nodes
+        for (Menu menu : list) {
+            Integer id = menu.getId();
+            Integer pid = menu.getPid();
+            String title = menu.getTitle();
+            String icon = menu.getIcon();
+            String href = menu.getHref();
+            Boolean spread = SysConstant.SPREAD_TRUE.equals(menu.getSpread());
+            String target = menu.getTarget();
+            nodes.add(new TreeNode(id, pid, title, icon, href, spread, target));
+        }
+        
+        return new DataGridView(nodes);
+    }
+
+
+    @RequestMapping("loadAllMenu")
+    public DataGridView loadAllMenu(MenuVo menuVo) {
+        return this.menuService.queryAllMenu(menuVo);
     }
     
 }
