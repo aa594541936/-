@@ -25,11 +25,11 @@
 	var menuTree;
 	layui.extend({
 		dtree:'${ctx}/resources/layui_ext/dist/dtree'
-	}).use([ 'jquery', 'layer', 'form','dtree' ], function() {
+	}).use(['jquery', 'layer', 'form', 'dtree'], function() {
 		var $ = layui.jquery;
 		var layer = layui.layer;
 		var form = layui.form;
-		var dtree=layui.dtree;
+		var dtree = layui.dtree;
 
 		 // 初始化树
 	    menuTree = dtree.render({

@@ -24,46 +24,52 @@
 	</style>
 </head>
 <body class="childrenBody">
+	
 	<!-- 搜索条件开始 -->
 	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
 	  <legend>查询条件</legend>
 	</fieldset>
 	<form class="layui-form" method="post" id="searchFrm">
 		<div class="layui-form-item">
+	
 		    <div class="layui-inline">
 		      <label class="layui-form-label">菜单名称:</label>
 		      <div class="layui-input-inline">
 		        <input type="text" name="title"  autocomplete="off" class="layui-input">
 		      </div>
 		    </div>
+	
 		    <div class="layui-inline">
 		      <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch">查询</button>
 		      <button type="reset" class="layui-btn layui-btn-warm  layui-icon layui-icon-refresh">重置</button>
 		    </div>
+	
 		 </div>
 	</form>
-	
 	<!-- 搜索条件结束 -->
 	
 	
 	<!-- 数据表格开始 -->
-	<table class="layui-hide" id="menuTable" lay-filter="menuTable"></table>
-	<div style="display: none;" id="menuToolBar">
-		    <button type="button" class="layui-btn layui-btn-sm" lay-event="add">增加</button>
-		    <button type="button" class="layui-btn layui-btn-sm" lay-event="batchDelete">批量删除</button>
+	<table class="layui-hide" id="menuTable" lay-filter="menuTable"> </table>
+	
+	<div style="display: none;" id="menuToolBar"> 
+		<button type="button" class="layui-btn layui-btn-sm" lay-event="add">增加</button>
+		<button type="button" class="layui-btn layui-btn-sm" lay-event="batchDelete">批量删除</button>
 	</div>
-	<div  id="menuBar" style="display: none;">
-	  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-	  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	<div id="menuBar" style="display: none;"> 
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> 
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</div>
 	<!-- 数据表格结束 -->
 	
+	
 	<!-- 添加和修改的弹出层开始 -->
-	<div style="display: none;padding: 20px" id="saveOrUpdateDiv" >
+	<div style="display: none; padding: 20px" id="saveOrUpdateDiv">
 		<form class="layui-form"  lay-filter="dataFrm" id="dataFrm">
 			<div class="layui-form-item">
-				  <label class="layui-form-label">父给菜单：</label>
+				  <label class="layui-form-label">父级菜单：</label>
 				   <div class="layui-input-block">
+	
 				      <div class="layui-unselect layui-form-select" id="pid_div">
 				        <div class="layui-select-title">
 				          <input type="hidden" name="pid" id="pid">
@@ -71,15 +77,19 @@
 				          <i class="layui-edge"></i>
 				        </div>
 				      </div>
+	
 				      <div class="layui-card select-test" id="menuSelectDiv">
 				        <div class="layui-card-body">
-				          <div id="toolbarDiv"><ul id="menuTree" class="dtree" data-id="0" style="width: 100%;"></ul></div>
+				          	<div id="toolbarDiv">
+								<ul id="menuTree" class="dtree" data-id="0" style="width: 100%;"></ul>
+							</div>
 				        </div>
 				      </div>
+	
 				  </div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">菜单名称:</label>
+				<label class="layui-form-label">菜单名称：</label>
 				<div class="layui-input-block">
 					<input type="hidden" name="id">
 					<input type="text" name="title"  placeholder="请输入菜单名称" autocomplete="off"
@@ -87,41 +97,38 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">菜单地址:</label>
+				<label class="layui-form-label">菜单地址：</label>
 				<div class="layui-input-block">
-					<input type="text" name="href" placeholder="请输入菜单地址" autocomplete="off"
-						class="layui-input">
+					<input type="text" name="href" placeholder="请输入菜单地址" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">菜单图标:</label>
+					<label class="layui-form-label">菜单图标：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="icon"   placeholder="请输入菜单图标" lay-verify="required" autocomplete="off"
-							class="layui-input">
+						<input type="text" name="icon" placeholder="请输入菜单图标" lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">TARGET:</label>
+					<label class="layui-form-label">target：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="target"  placeholder="请输入TRAGET"  autocomplete="off"
-							class="layui-input">
+						<input type="text" name="target" placeholder="请输入target" autocomplete="off" class="layui-input">
 					</div>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">是否展开:</label>
+					<label class="layui-form-label">是否展开：</label>
 					<div class="layui-input-inline">
-						 <input type="radio" name="spread" value="1" title="展开">
-						 <input type="radio" name="spread" value="0" title="不展开"  checked="checked">
+						 <input type="radio" name="spread" value="1" title="是">
+						 <input type="radio" name="spread" value="0" title="否" checked="checked">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">是否可用:</label>
+					<label class="layui-form-label">是否可用：</label>
 					<div class="layui-input-inline">
-						 <input type="radio" name="available" value="1" checked="checked" title="可用">
-						 <input type="radio" name="available" value="0" title="不可">
+						 <input type="radio" name="available" value="1" checked="checked" title="是">
+						 <input type="radio" name="available" value="0" title="否">
 					</div>
 				</div>
 			</div>
@@ -136,27 +143,31 @@
 	</div>
 	<!-- 添加和修改的弹出层结束 -->
 	
+	
 	<script src="${ctx}/resources/layui/layui.js"></script>
 	<script type="text/javascript">
+	
 	    var tableIns;
-	    layui.extend({
+	    
+	    layui.extend({ 
 			dtree:'${ctx}/resources/layui_ext/dist/dtree'
-		}).use([ 'jquery', 'layer', 'form', 'table','dtree'  ], function() {
+		}).use(['jquery', 'layer', 'form', 'table', 'dtree'], function() {
 			var $ = layui.jquery;
 			var layer = layui.layer;
 			var form = layui.form;
 			var table = layui.table;
 			var dtree=layui.dtree;
-			//渲染数据表格
+			
+			// 渲染数据表格
 			 tableIns=table.render({
-				 elem: '#menuTable'   //渲染的目标对象
-			    ,url:'${ctx}/menu/loadAllMenu.action' //数据接口
-			    ,title: '用户数据表'//数据导出来的标题
-			    ,toolbar:"#menuToolBar"   //表格的工具条
-			    ,height:'full-150'
-			    ,cellMinWidth:100 //设置列的最小默认宽度
-			    ,page: true  //是否启用分页
-			    ,cols: [[   //列表数据
+				 elem: '#menuTable'   // 渲染的目标对象 
+			    ,url: '${ctx}/menu/loadAllMenu.action' // 数据接口
+			    ,title: '用户数据表'    // 数据导出来的标题
+			    ,toolbar: "#menuToolBar"   // 表格的工具条
+			    ,height: 'full-150'
+			    ,cellMinWidth: 100  // 设置列的最小默认宽度
+			    ,page: true  // 是否启用分页
+			    ,cols: [[   // 列表数据
 			     {type: 'checkbox', fixed: 'left'}
 			      ,{field:'id', title:'ID',align:'center',width:'80'}
 			      ,{field:'pid', title:'父节点ID',align:'center',width:'100'}
@@ -174,104 +185,123 @@
 			      }}
 			      ,{fixed: 'right', title:'操作', toolbar: '#menuBar', width:180,align:'center'}
 			    ]]
-			})
-			//模糊查询
-			$("#doSearch").click(function(){
-				var params=$("#searchFrm").serialize();
-				alert(params);
+			});
+			 
+			 
+			// 模糊查询
+			$("#doSearch").click(function() {
+				var params = $("#searchFrm").serialize();
+				// alert(params);
 				tableIns.reload({
 					url:"${ctx}/menu/loadAllMenu.action?"+params
 				})
 			});
 			
-			//监听头部工具栏事件
-			table.on("toolbar(menuTable)",function(obj){
-				 switch(obj.event){
+			// 监听头部工具栏事件
+			table.on("toolbar(menuTable)",function(obj) {
+				 switch(obj.event) {
 				    case 'add':
 				      openAddMenu();
 				    break;
 				    case 'batchDelete':
 				      layer.msg('批量删除');
 				    break;
-				  };
-			})
-			//监听行工具事件
-		   table.on('tool(menuTable)', function(obj){
-			   var data = obj.data; //获得当前行数据
-			   var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-			  if(layEvent === 'del'){ //删除
-				 layer.msg("删除");
-			     layer.confirm('真的删除行么', function(index){
-			       layer.close(index);
-			       //向服务端发送删除指令
-			     });
-			   } else if(layEvent === 'edit'){ //编辑
-			     //do something
+				 }
+			});
+			
+			// 监听行工具事件
+		   table.on('tool(menuTable)', function(obj) {
+				// 获得当前行数据
+			   	const data = obj.data;
+				// 获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+				const layEvent = obj.event; 
+				// 删除
+			  	if (layEvent === 'del') {
+				 	layer.msg("删除"); 
+				 	layer.confirm('确认删除该条数据吗', function(index) {
+				 		layer.close(index);
+			            //向服务端发送删除指令
+			    	});
+			    } else if(layEvent === 'edit') { //编辑
+			     // do something
 				   layer.msg("修改")
 			   }
 			 });
-			
+		   
 			var url;
 			var mainIndex;
-			//打开添加页面
-			function openAddMenu(){
-				mainIndex=layer.open({
-					type:1,
-					title:'添加菜单',
-					content:$("#saveOrUpdateDiv"),
-					area:['800px','450px'],
-					success:function(index){
-						//清空表单数据       
+			
+			// 打开添加页面
+			function openAddMenu() {
+				mainIndex = layer.open({
+					type: 1,
+					title: '添加菜单',
+					content: $("#saveOrUpdateDiv"),
+					area: ['800px','450px'],
+					success: function(index) {
+						// 清空表单数据       
 						$("#dataFrm")[0].reset();
 						$("#menuSelectDiv").removeClass("layui-show");
-						url="${ctx}/menu/addMenu.action";
+						url = "${ctx}/menu/addMenu.action";
 					}
 				});
 			}
-			//打开修改页面
-			function openUpdateMenu(data){
-				mainIndex=layer.open({
-					type:1,
-					title:'修改用户',
-					content:$("#saveOrUpdateDiv"),
-					area:['800px','450px'],
-					success:function(index){
-						form.val("dataFrm",data);
-						url="${ctx}/menu/updateMenu.action";
+			
+			// 打开修改页面
+			function openUpdateMenu(data) {
+				mainIndex = layer.open({
+					type: 1,
+					title: '修改用户',
+					content: $("#saveOrUpdateDiv"),
+					area: ['800px','450px'],
+					success: function(index) {
+						form.val("dataFrm", data);
+						url = "${ctx}/menu/updateMenu.action";
 					}
 				});
 			}
-			//保存
-			form.on("submit(doSubmit)",function(obj){
+			
+			// 保存
+			form.on("submit(doSubmit)",function(obj) {
 				//序列化表单数据
 				var params=$("#dataFrm").serialize();
 				$.post(url,params,function(obj){
 					layer.msg(obj.msg);
 					//关闭弹出层
-					layer.close(mainIndex)
+					layer.close(mainIndex);
 					//刷新数据 表格
 					tableIns.reload();
-					//刷新左边的树
-					//window.parent.left.menuTree.reload();
-					//刷新添加和修改的下拉树
-					menuTree.reload();
+					// 刷新左边的树
+					window.parent.left.menuTree.reload("menuTree", {
+						url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+						// initLevel: 2,
+						icon: "2"
+					});
+					
+					// 刷新添加和修改的下拉树
+					dtree.reload("menuTree", {
+						url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+						icon: "2",
+						accordion: true
+					});
 				})
 			});
-			//初始化添加和修改页面的下拉树
+			
+			// 初始化添加和修改页面的下拉树
 			var menuTree = dtree.render({
 				  elem: "#menuTree",
-				  dataStyle: "layuiStyle",  //使用layui风格的数据格式
-			      response:{message:"msg",statusCode:0},  //修改response中返回数据的定义
-		          dataFormat: "list",  //配置data的风格为list
-		          url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action?spread=1",  // 使用url加载（可与data加载同时存在）
+				  dataStyle: "layuiStyle",  // 使用layui风格的数据格式
+			      response:{message: "msg", statusCode: 0},  // 修改response中返回数据的定义
+		          dataFormat: "list",  // 配置data的风格为list
+		          url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",  // 使用url加载（可与data加载同时存在）
 				  icon: "2",
-				  accordion:true
+				  accordion: true
 				});
-				$("#pid_div").on("click",function(){
+				$("#pid_div").on("click",function() {
 				  $(this).toggleClass("layui-form-selected");
 				  $("#menuSelectDiv").toggleClass("layui-show layui-anim layui-anim-upbit");
 				});
-				dtree.on("node(menuTree)", function(obj){
+				dtree.on("node(menuTree)", function(obj) {
 				  $("#pid_str").val(obj.param.context);
 				  $("#pid").val(obj.param.nodeId);
 				  $("#pid_div").toggleClass("layui-form-selected");
@@ -280,11 +310,12 @@
 			
 		});
 		
-		function reloadTable(id){
+		function reloadTable(id) {
 			tableIns.reload({
 				url:"${ctx}/menu/loadAllMenu.action?id="+id
 			})
 		}
+		
 	</script>
 </body>
 </html>

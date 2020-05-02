@@ -25,5 +25,11 @@ public interface MenuService {
      * @return
      */
     DataGridView queryAllMenu(MenuVo menuVo);
+
+    /**
+     * 添加菜单
+     * @param menuVo
+     */
+    void addMenu(MenuVo menuVo);
     
 }

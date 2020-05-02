@@ -17,14 +17,12 @@ public class MenuServiceImpl implements MenuService {
     
     @Autowired
     MenuMapper menuMapper;
-
-
+    
     @Override
     public List<Menu> queryAllMenuForList(MenuVo menuVo) {
         return menuMapper.queryAllMenu(menuVo);
     }
-
-
+    
     /**
      * 后期权限管理完成之后再来改
      */
@@ -39,4 +37,10 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> data = this.menuMapper.queryAllMenu(menuVo);
         return new DataGridView(page.getTotal(), data);
     }
+
+    @Override
+    public void addMenu(MenuVo menuVo) {
+        this.menuMapper.insertSelective(menuVo);
+    }
+    
 }
