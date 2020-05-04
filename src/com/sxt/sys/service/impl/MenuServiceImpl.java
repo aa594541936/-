@@ -34,13 +34,33 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public DataGridView queryAllMenu(MenuVo menuVo) {
         Page<Object> page= PageHelper.startPage(menuVo.getPage(), menuVo.getLimit());
-        List<Menu> data = this.menuMapper.queryAllMenu(menuVo);
+        List<Menu> data = menuMapper.queryAllMenu(menuVo);
         return new DataGridView(page.getTotal(), data);
     }
 
     @Override
     public void addMenu(MenuVo menuVo) {
-        this.menuMapper.insertSelective(menuVo);
+        menuMapper.insertSelective(menuVo);
     }
-    
+
+    @Override
+    public void updateMenu(MenuVo menuVo) {
+        menuMapper.updateByPrimaryKeySelective(menuVo);
+    }
+
+    @Override
+    public Integer queryMenuByPid(Integer pId) {
+        return menuMapper.queryMenuByPid(pId);
+    }
+
+    @Override
+    public void deleteMenu(MenuVo menuVo) {
+        
+        // 先删除菜单表里的数据
+        menuMapper.deleteByPrimaryKey(menuVo.getId());
+        
+        // 再根据菜单id删除中间表sys_role_menu里面的数据
+        menuMapper.deleteRoleMenuByMid(menuVo.getId());
+    }
+
 }

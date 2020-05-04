@@ -1,50 +1,52 @@
 package com.sxt.sys.service;
 
 import com.sxt.sys.domain.Menu;
+import com.sxt.sys.domain.Role;
 import com.sxt.sys.utils.DataGridView;
 import com.sxt.sys.vo.MenuVo;
+import com.sxt.sys.vo.RoleVo;
 
 import java.util.List;
 
-public interface MenuService {
+public interface RoleService {
 
     /**
      * 查询所有菜单返回
      * List<Menu>
      */
-    List<Menu> queryAllMenuForList(MenuVo menuVo);
+    List<Role> queryAllRoleForList(RoleVo roleVo);
 
     /**
      * 根据用户id查询用户的可用菜单
      */
-    List<Menu> queryMenuByUserIdForList(MenuVo menuVo, Integer userId);
+    List<Role> queryRoleByUserIdForList(RoleVo roleVo, Integer userId);
 
     /**
      * 查询所有菜单
-     * @param menuVo
+     * @param roleVo
      * @return
      */
-    DataGridView queryAllMenu(MenuVo menuVo);
+    DataGridView queryAllRole(RoleVo roleVo);
 
     /**
      * 添加菜单
-     * @param menuVo
+     * @param roleVo
      */
-    void addMenu(MenuVo menuVo);
+    void addRole(RoleVo roleVo);
 
     /**
      * 修改菜单
-     * @param menuVo
+     * @param roleVo
      */
-    void updateMenu(MenuVo menuVo);
+    void updateRole(RoleVo roleVo);
 
     /**
      * 根据pId查询菜单数量
      * @param pid
      * @return
      */
-    Integer queryMenuByPid(Integer pid);
+    Integer queryRoleByPid(Integer pid);
 
     
-    void deleteMenu(MenuVo menuVo);
+    void deleteRole(Integer[] ids);
 }

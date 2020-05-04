@@ -144,4 +144,14 @@
     </where>
   </select>
   
+  <!-- 根据pid查询子菜单数量 -->
+  <select id="queryMenuByPid" resultType="java.lang.Integer">
+    select count(1) from sys_menu where pid = #{pid}
+  </select>
+  
+  
+  <delete id="deleteRoleMenuByMid">
+    delete from sys_role_menu where mid = #{mid}
+  </delete>
+  
 </mapper>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +28,7 @@
 	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
 	  <legend>查询条件</legend>
 	</fieldset>
+	
 	<form class="layui-form" method="post" id="searchFrm">
 		<div class="layui-form-item">
 	
@@ -143,178 +143,221 @@
 	</div>
 	<!-- 添加和修改的弹出层结束 -->
 	
-	
 	<script src="${ctx}/resources/layui/layui.js"></script>
 	<script type="text/javascript">
 	
-	    var tableIns;
-	    
-	    layui.extend({ 
-			dtree:'${ctx}/resources/layui_ext/dist/dtree'
-		}).use(['jquery', 'layer', 'form', 'table', 'dtree'], function() {
-			var $ = layui.jquery;
-			var layer = layui.layer;
-			var form = layui.form;
-			var table = layui.table;
-			var dtree=layui.dtree;
-			
-			// 渲染数据表格
-			 tableIns=table.render({
-				 elem: '#menuTable'   // 渲染的目标对象 
-			    ,url: '${ctx}/menu/loadAllMenu.action' // 数据接口
-			    ,title: '用户数据表'    // 数据导出来的标题
-			    ,toolbar: "#menuToolBar"   // 表格的工具条
-			    ,height: 'full-150'
-			    ,cellMinWidth: 100  // 设置列的最小默认宽度
-			    ,page: true  // 是否启用分页
-			    ,cols: [[   // 列表数据
-			     {type: 'checkbox', fixed: 'left'}
-			      ,{field:'id', title:'ID',align:'center',width:'80'}
-			      ,{field:'pid', title:'父节点ID',align:'center',width:'100'}
-			      ,{field:'title', title:'菜单名称',align:'center',width:'120'}
-			      ,{field:'href', title:'菜单地址',align:'center',width:'220'}
-			      ,{field:'spread', title:'是否展开',align:'center',width:'100',templet:function(d){
-			    	  return d.spread=='1'?'<font color=blue>展开</font>':'<font color=red>不展开</font>';
-			      }}
-			      ,{field:'target', title:'TARGET',align:'center',width:'100'}
-			      ,{field:'icon', title:'菜单图标',align:'center',width:'100',templet:function(d){
-			    	  return "<div class='layui-icon'>"+d.icon+"</div>";
-			      }}
-			      ,{field:'available', title:'是否可用',align:'center',width:'100',templet:function(d){
-			    	  return d.available=='1'?'<font color=blue>可用</font>':'<font color=red>不可用</font>';
-			      }}
-			      ,{fixed: 'right', title:'操作', toolbar: '#menuBar', width:180,align:'center'}
-			    ]]
-			});
-			 
-			 
-			// 模糊查询
-			$("#doSearch").click(function() {
-				var params = $("#searchFrm").serialize();
-				// alert(params);
-				tableIns.reload({
-					url:"${ctx}/menu/loadAllMenu.action?"+params
-				})
-			});
-			
-			// 监听头部工具栏事件
-			table.on("toolbar(menuTable)",function(obj) {
-				 switch(obj.event) {
-				    case 'add':
-				      openAddMenu();
-				    break;
-				    case 'batchDelete':
-				      layer.msg('批量删除');
-				    break;
-				 }
-			});
-			
-			// 监听行工具事件
-		   table.on('tool(menuTable)', function(obj) {
-				// 获得当前行数据
-			   	const data = obj.data;
-				// 获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-				const layEvent = obj.event; 
-				// 删除
-			  	if (layEvent === 'del') {
-				 	layer.msg("删除"); 
-				 	layer.confirm('确认删除该条数据吗', function(index) {
-				 		layer.close(index);
-			            //向服务端发送删除指令
-			    	});
-			    } else if(layEvent === 'edit') { //编辑
-			     // do something
-				   layer.msg("修改")
-			   }
-			 });
-		   
-			var url;
-			var mainIndex;
-			
-			// 打开添加页面
-			function openAddMenu() {
-				mainIndex = layer.open({
-					type: 1,
-					title: '添加菜单',
-					content: $("#saveOrUpdateDiv"),
-					area: ['800px','450px'],
-					success: function(index) {
-						// 清空表单数据       
-						$("#dataFrm")[0].reset();
-						$("#menuSelectDiv").removeClass("layui-show");
-						url = "${ctx}/menu/addMenu.action";
-					}
-				});
-			}
-			
-			// 打开修改页面
-			function openUpdateMenu(data) {
-				mainIndex = layer.open({
-					type: 1,
-					title: '修改用户',
-					content: $("#saveOrUpdateDiv"),
-					area: ['800px','450px'],
-					success: function(index) {
-						form.val("dataFrm", data);
-						url = "${ctx}/menu/updateMenu.action";
-					}
-				});
-			}
-			
-			// 保存
-			form.on("submit(doSubmit)",function(obj) {
-				//序列化表单数据
-				var params=$("#dataFrm").serialize();
-				$.post(url,params,function(obj){
-					layer.msg(obj.msg);
-					//关闭弹出层
-					layer.close(mainIndex);
-					//刷新数据 表格
-					tableIns.reload();
-					// 刷新左边的树
-					window.parent.left.menuTree.reload("menuTree", {
-						url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
-						// initLevel: 2,
-						icon: "2"
-					});
-					
-					// 刷新添加和修改的下拉树
-					dtree.reload("menuTree", {
-						url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
-						icon: "2",
-						accordion: true
-					});
-				})
-			});
-			
-			// 初始化添加和修改页面的下拉树
-			var menuTree = dtree.render({
-				  elem: "#menuTree",
-				  dataStyle: "layuiStyle",  // 使用layui风格的数据格式
-			      response:{message: "msg", statusCode: 0},  // 修改response中返回数据的定义
-		          dataFormat: "list",  // 配置data的风格为list
-		          url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",  // 使用url加载（可与data加载同时存在）
-				  icon: "2",
-				  accordion: true
-				});
-				$("#pid_div").on("click",function() {
-				  $(this).toggleClass("layui-form-selected");
-				  $("#menuSelectDiv").toggleClass("layui-show layui-anim layui-anim-upbit");
-				});
-				dtree.on("node(menuTree)", function(obj) {
-				  $("#pid_str").val(obj.param.context);
-				  $("#pid").val(obj.param.nodeId);
-				  $("#pid_div").toggleClass("layui-form-selected");
-				  $("#menuSelectDiv").toggleClass("layui-show layui-anim layui-anim-upbit");
-				});
-			
+	var tableIns;
+	
+	layui.extend({
+		dtree:'${ctx}/resources/layui_ext/dist/dtree'
+	}).use(['jquery', 'layer', 'form', 'table', 'dtree'], function() {
+	
+		var $ = layui.jquery;
+		var layer = layui.layer;
+		var form = layui.form;
+		var table = layui.table;
+		var dtree=layui.dtree;
+
+		// 渲染数据表格
+		tableIns = table.render({
+	
+			 elem: '#menuTable'
+			,url: '${ctx}/menu/loadAllMenu.action' // 数据接口
+			,title: '用户数据表'    // 数据导出来的标题
+			,toolbar: "#menuToolBar"   // 表格的工具条
+			,height: 'full-150'
+			,cellMinWidth: 100  // 设置列的最小默认宽度
+			,page: true  // 是否启用分页
+			,cols: [[   // 列表数据
+			 {type: 'checkbox', fixed: 'left'}
+			  ,{field:'id', title:'ID',align:'center',width:'80'}
+			  ,{field:'pid', title:'父节点ID',align:'center',width:'100'} 
+			  ,{field:'title', title:'菜单名称',align:'center',width:'120'}
+			  ,{field:'href', title:'菜单地址',align:'center',width:'220'}
+			  ,{field:'spread', title:'是否展开',align:'center',width:'100',templet:function(d){
+				  return d.spread===1?'<font color=blue>是</font>':'<font color=red>否</font>';
+			  }}
+			  ,{field:'target', title:'TARGET',align:'center',width:'100'}
+			  ,{field:'icon', title:'菜单图标',align:'center',width:'100',templet:function(d){
+				  return "<div class='layui-icon'>"+d.icon+"</div>";
+			  }}
+			  ,{field:'available', title:'是否可用',align:'center',width:'100',templet:function(d){
+				  return d.available===1?'<font color=blue>是</font>':'<font color=red>否</font>';
+			  }}
+			  ,{fixed: 'right', title:'操作', toolbar: '#menuBar', width:180,align:'center'}
+			]]
+		});
+		 
+		 
+		// 模糊查询
+		$("#doSearch").click(function() {
+			const params = $("#searchFrm").serialize();
+			// alert(params);
+			tableIns.reload({
+				url:"${ctx}/menu/loadAllMenu.action?"+params
+			})
 		});
 		
-		function reloadTable(id) {
-			tableIns.reload({
-				url:"${ctx}/menu/loadAllMenu.action?id="+id
-			})
+		// 监听头部工具栏事件
+		table.on("toolbar(menuTable)",function(obj) {
+			 switch(obj.event) {
+				case 'add':
+				  openAddMenu();
+				break;
+				case 'batchDelete':
+				  layer.msg('批量删除');
+				break;
+			 }
+		});
+		
+		// 监听行工具事件
+		table.on('tool(menuTable)', function(obj) {
+			// 获得当前行数据
+			const data = obj.data;
+			// 获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+			const layEvent = obj.event; 
+			// 删除
+			if (layEvent === 'del') {
+				// 先判断当前菜单有没有子菜单
+				$.post("${ctx}/menu/checkMenuHasChildren.action?id="+data.id, function(obj) {
+					if (obj.code >= 0) {
+					   layer.msg("当前菜单有子菜单，请先删除子菜单");
+					} else {
+						layer.confirm('确认删除【'+data.title+'】这个菜单吗', function(index) {
+							// 向服务端发送删除指令
+							$.post("${ctx}/menu/deleteMenu.action", {id: data.id}, function(result) {
+								// 提示是否删除成功
+								layer.msg(result.msg);
+								// 刷新数据表格
+								tableIns.reload();
+								// 刷新菜单管理左边的树
+								window.parent.left.dtree.reload("menuTree", {
+									url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+									icon: "2",
+									accordion: true
+								});
+						
+								// 刷新添加和修改的下拉树
+								dtree.reload("menuTree", {
+									url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+									icon: "2",
+									accordion: true
+								});
+								
+							});
+						});
+					}
+					
+				});
+				
+				// layer.confirm('确认删除该条数据吗', function(index) {
+				// 	layer.close(index);
+				// 	//向服务端发送删除指令
+				// });
+	
+			// 编辑
+			} else if(layEvent === 'edit') {
+				openUpdateMenu(data);
+			}
+		});
+	   
+		var url;
+		var mainIndex;
+		
+		// 打开添加页面
+		function openAddMenu() {
+			mainIndex = layer.open({
+				type: 1,
+				title: '添加菜单',
+				content: $("#saveOrUpdateDiv"),
+				area: ['800px','450px'],
+				success: function(index) {
+					// 清空表单数据       
+					$("#dataFrm")[0].reset();
+					$("#menuSelectDiv").removeClass("layui-show");
+					url = "${ctx}/menu/addMenu.action";
+				}
+			});
 		}
+		
+		// 打开修改页面
+		function openUpdateMenu(data) {
+			mainIndex = layer.open({
+				type: 1,
+				title: '修改菜单',
+				content: $("#saveOrUpdateDiv"),
+				area: ['800px','450px'],
+				success: function(index) {
+					form.val("dataFrm", data);
+					url = "${ctx}/menu/updateMenu.action";
+					
+					// 反选下拉树
+					const pid = data.pid;
+					const params = dtree.dataInit("menuTree", pid);
+					// 移除打开的样式
+					$("#menuSelectDiv").removeClass("layui-show");
+					// 给下拉框的text框赋值
+					$("#pid_str").val(params.context);
+				}
+			});
+		}
+		
+		// 保存
+		form.on("submit(doSubmit)",function(obj) {
+			// 序列化表单数据
+			var params=$("#dataFrm").serialize();
+			$.post(url, params, function(obj) {
+				layer.msg(obj.msg);
+				// 关闭弹出层
+				layer.close(mainIndex);
+				// 刷新数据表格
+				tableIns.reload();
+				// 刷新菜单管理左边的树
+				window.parent.left.dtree.reload("menuTree", {
+					url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+					icon: "2",
+					accordion: true
+				});
+				
+				// 刷新添加和修改的下拉树
+				dtree.reload("menuTree", {
+					url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",
+					icon: "2",
+					accordion: true
+				});
+			})
+		});
+		
+			// 初始化添加和修改页面的下拉树
+			var menuTree = dtree.render({
+			elem: "#menuTree",
+			dataStyle: "layuiStyle", 
+			// 修改response中返回数据的定义
+			response:{message: "msg", statusCode: 0},
+			// 配置data的风格为list
+			dataFormat: "list",
+			url: "${ctx}/menu/loadMenuManagerLeftTreeJson.action",  // 使用url加载（可与data加载同时存在）
+			  icon: "2",
+			  accordion: true
+			});
+			$("#pid_div").on("click",function() {
+			  $(this).toggleClass("layui-form-selected");
+			  $("#menuSelectDiv").toggleClass("layui-show layui-anim layui-anim-upbit");
+			});
+			dtree.on("node(menuTree)", function(obj) {
+			  $("#pid_str").val(obj.param.context);
+			  $("#pid").val(obj.param.nodeId);
+			  $("#pid_div").toggleClass("layui-form-selected");
+			  $("#menuSelectDiv").toggleClass("layui-show layui-anim layui-anim-upbit");
+			});
+		
+	});
+	
+	function reloadTable(id) {
+		tableIns.reload({
+			url:"${ctx}/menu/loadAllMenu.action?id="+id
+		});
+	}
 		
 	</script>
 </body>

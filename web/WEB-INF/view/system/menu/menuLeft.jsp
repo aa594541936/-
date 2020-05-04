@@ -23,13 +23,14 @@
 	<script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 	<script type="text/javascript">
 	var menuTree;
+	var dtree;
 	layui.extend({
 		dtree:'${ctx}/resources/layui_ext/dist/dtree'
 	}).use(['jquery', 'layer', 'form', 'dtree'], function() {
 		var $ = layui.jquery;
 		var layer = layui.layer;
 		var form = layui.form;
-		var dtree = layui.dtree;
+		dtree = layui.dtree;
 
 		 // 初始化树
 	    menuTree = dtree.render({

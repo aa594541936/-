@@ -22,7 +22,7 @@ public class SysController {
     /**
      * 跳转菜单管理左边的的菜单树页面
      */
-    @RequestMapping("toMenuLeft")
+    @RequestMapping("/toMenuLeft")
     public String toMenuLeft() {
         return "system/menu/menuLeft";
     }
@@ -30,9 +30,17 @@ public class SysController {
     /**
      * 跳转菜单管理右边的菜单列表
      */
-    @RequestMapping("toMenuRight")
+    @RequestMapping("/toMenuRight")
     public String toMenuRight() {
         return "system/menu/menuRight";
+    }
+
+    /**
+     * 跳转角色管理页面
+     */
+    @RequestMapping("/toRoleManager")
+    public String toRoleManager() {
+        return "system/role/roleManager";
     }
 
 }

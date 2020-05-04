@@ -21,4 +21,14 @@ public interface MenuMapper {
      * 查询所有菜单
      */
     List<Menu> queryAllMenu(Menu menu);
+
+    /**
+     * 根据pid查询子菜单数量
+     * @param pid
+     * @return
+     */
+    Integer queryMenuByPid(Integer pid);
+
+    
+    void deleteRoleMenuByMid(Integer mid);
 }

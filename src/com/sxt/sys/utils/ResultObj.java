@@ -57,6 +57,20 @@ public class ResultObj {
      */
     public static final ResultObj DISPATCH_ERROR = new ResultObj(SysConstant.CODE_ERROR, SysConstant.DISPATCH_ERROR);
 
+    /**
+     * 状态码 0
+     */
+    public static final ResultObj STATUS_TRUE = new ResultObj(SysConstant.CODE_SUCCESS);
+    
+    /**
+     * 状态码 -1
+     */
+    public static final ResultObj STATUS_FALSE = new ResultObj(SysConstant.CODE_ERROR);
+
+    private ResultObj(Integer code) {
+        this.code = code;
+    }
+
     private ResultObj(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
