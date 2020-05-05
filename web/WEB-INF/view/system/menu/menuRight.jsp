@@ -156,11 +156,11 @@
 		var layer = layui.layer;
 		var form = layui.form;
 		var table = layui.table;
-		var dtree=layui.dtree;
+		var dtree = layui.dtree;
+		
 
 		// 渲染数据表格
 		tableIns = table.render({
-	
 			 elem: '#menuTable'
 			,url: '${ctx}/menu/loadAllMenu.action' // 数据接口
 			,title: '用户数据表'    // 数据导出来的标题

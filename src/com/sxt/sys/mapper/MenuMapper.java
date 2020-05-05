@@ -1,6 +1,7 @@
 package com.sxt.sys.mapper;
 
 import com.sxt.sys.domain.Menu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -28,7 +29,8 @@ public interface MenuMapper {
      * @return
      */
     Integer queryMenuByPid(Integer pid);
-
     
     void deleteRoleMenuByMid(Integer mid);
+
+    List<Menu> queryMenuByRoleId(@Param("roleId") Integer roleId, @Param("availableTrue") Integer availableTrue);
 }

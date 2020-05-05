@@ -1,6 +1,7 @@
 package com.sxt.sys.mapper;
 
 import com.sxt.sys.domain.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface RoleMapper {
     void deleteRoleMenuByRid(Integer[] ids);
     
     void deleteRoleUserByRid(Integer[] ids);
+
+    void insertRoleMenu(@Param("roleId") Integer roleId, @Param("mId") Integer mId);
 }

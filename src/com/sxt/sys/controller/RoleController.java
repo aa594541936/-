@@ -64,6 +64,30 @@ public class RoleController {
             return ResultObj.DELETE_ERROR;
         }
     }
-    
-    
+
+
+    /**
+     * 加载角色管理分配菜单的树的json
+     */
+    @RequestMapping("/initRoleMenuTreeJson")
+    public DataGridView initRoleMenuTreeJson(Integer roleId) {
+        return roleService.initRoleMenuTreeJson(roleId);
+    }
+
+
+    /**
+     * 保存角色和菜单的关系
+     */
+    @RequestMapping("/saveRoleMenu")
+    public ResultObj saveRoleMenu(RoleVo roleVo) {
+        try {
+            roleService.saveRoleMenu(roleVo);
+            return ResultObj.DISPATCH_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DISPATCH_ERROR;
+        }
+    }
+
+
 }

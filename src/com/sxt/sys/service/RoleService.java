@@ -49,4 +49,9 @@ public interface RoleService {
 
     
     void deleteRole(Integer[] ids);
+    
+    DataGridView initRoleMenuTreeJson(Integer roleId);
+
+    void saveRoleMenu(RoleVo roleVo);
+    
 }

@@ -50,4 +50,12 @@ public interface SysConstant {
 	// 操作失败
 	Integer CODE_ERROR = -1;
 
+	/**
+	 * 公用常量
+	 */
+	Integer CODE_ZERO = 0;
+	Integer CODE_ONE = 1;
+	Integer CODE_TWO = 2;
+	Integer CODE_THREE = 3;
+
 }
