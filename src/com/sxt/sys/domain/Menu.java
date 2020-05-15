@@ -94,4 +94,18 @@ public class Menu {
         this.icon = icon;
         this.available = available;
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", pid=" + pid +
+                ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
+                ", spread=" + spread +
+                ", target='" + target + '\'' +
+                ", icon='" + icon + '\'' +
+                ", available=" + available +
+                '}';
+    }
 }

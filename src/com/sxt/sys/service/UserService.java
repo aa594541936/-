@@ -29,9 +29,9 @@ public interface UserService {
 
     /**
      * 根据id删除用户
-     * @param userId
+     * @param ids
      */
-    void deleteUser(Integer userId);
+    void deleteUser(Integer[] ids);
     
     /**
      * 批量删除用户
@@ -47,8 +47,6 @@ public interface UserService {
 
     /**
      *  加载用户管理的分配角色的数据
-     * @param userid
-     * @return
      */
     DataGridView queryUserRole(Integer userId);
 

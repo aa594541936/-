@@ -97,7 +97,8 @@
       </if>
     </where>
   </select>
-  
+
+  <!-- 根据角色id删除角色 -->
   <delete id="deleteRoleByRid">
     delete from sys_role where roleid in
     <foreach collection="array" item="rid" index="index" open="(" close=")" separator=",">
@@ -125,5 +126,18 @@
   <insert id="insertRoleMenu">
     insert into sys_role_menu(rid, mid) values(#{roleId}, #{mId})
   </insert>
+
+  <delete id="deleteRoleUserByUid">
+    delete from sys_role_user where uid in
+    <foreach collection="array" item="uid" index="index" open="(" close=")" separator=",">
+      #{uid}
+    </foreach>
+  </delete>
+
+  <select id="queryRoleByUid" resultMap="BaseResultMap">
+		select t1.* from sys_role
+		t1 inner join sys_role_user t2 on(t1.roleid=t2.rid) where t2.uid=#{uid}
+		and t1.available=#{available}
+  </select>
   
 </mapper>

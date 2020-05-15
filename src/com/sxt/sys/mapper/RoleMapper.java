@@ -30,4 +30,8 @@ public interface RoleMapper {
     void deleteRoleUserByRid(Integer[] ids);
 
     void insertRoleMenu(@Param("roleId") Integer roleId, @Param("mId") Integer mId);
+
+    void deleteRoleUserByUid(Integer[] ids);
+
+    List<Role> queryRoleByUid(@Param("available") Integer availableTrue, @Param("uid") Integer userId);
 }

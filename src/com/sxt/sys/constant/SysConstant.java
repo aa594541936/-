@@ -1,5 +1,7 @@
 package com.sxt.sys.constant;
 
+import java.sql.ResultSet;
+
 /**
  * 常量接口
  *
@@ -17,8 +19,8 @@ public interface SysConstant {
 	/**
 	 * 用户类型
 	 */
-	Integer USER_TYPE_SUPER = 1;
-	Integer USER_TYPE_NORMAL= 2;
+	Integer USER_TYPE_SUPER = 1; // 管理员
+	Integer USER_TYPE_NORMAL = 2; // 普通用户
 
 	/**
 	 * 是否展开
@@ -57,5 +59,10 @@ public interface SysConstant {
 	Integer CODE_ONE = 1;
 	Integer CODE_TWO = 2;
 	Integer CODE_THREE = 3;
+
+	/**
+	 * 默认密码配置
+	 */
+	String USER_DEFAULT_PWD = "123456";
 
 }

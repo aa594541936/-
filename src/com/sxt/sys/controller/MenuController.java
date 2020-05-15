@@ -55,7 +55,9 @@ public class MenuController {
         menuVo.setAvailable(SysConstant.AVAILABLE_TRUE);
         
         List<Menu> list = menuService.queryAllMenuForList(menuVo);
-        
+
+        System.out.println("=======================：" + list.toString());
+
         List<TreeNode> nodes = TreeNodeBuilder.list2Nodes(list);
         
         return new DataGridView(nodes);
