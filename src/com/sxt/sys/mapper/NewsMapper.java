@@ -2,6 +2,8 @@ package com.sxt.sys.mapper;
 
 import com.sxt.sys.domain.News;
 
+import java.util.List;
+
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,9 @@ public interface NewsMapper {
     int updateByPrimaryKeySelective(News record);
 
     int updateByPrimaryKey(News record);
+
+    /**
+     * 查询
+     */
+    List<News> queryAllNews(News news);
 }

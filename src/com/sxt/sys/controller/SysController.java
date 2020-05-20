@@ -43,6 +43,14 @@ public class SysController {
         return "system/role/roleManager";
     }
 
+    /**
+     * 跳转日志管理页面
+     */
+    @RequestMapping("toLogInfoManager")
+    public String toLogInfoManager() {
+        return "system/logInfo/logInfoManager";
+    }
+
     @RequestMapping("/toUserManager")
     public String toUserManager() {
         return "system/user/userManager";
