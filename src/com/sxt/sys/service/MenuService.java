@@ -21,6 +21,7 @@ public interface MenuService {
 
     /**
      * 查询所有菜单
+     *
      * @param menuVo
      * @return
      */
@@ -28,23 +29,26 @@ public interface MenuService {
 
     /**
      * 添加菜单
+     *
      * @param menuVo
      */
     void addMenu(MenuVo menuVo);
 
     /**
      * 修改菜单
+     *
      * @param menuVo
      */
     void updateMenu(MenuVo menuVo);
 
     /**
      * 根据pId查询菜单数量
+     *
      * @param pid
      * @return
      */
     Integer queryMenuByPid(Integer pid);
 
-    
+
     void deleteMenu(MenuVo menuVo);
 }

@@ -23,6 +23,7 @@ public interface RoleService {
 
     /**
      * 查询所有菜单
+     *
      * @param roleVo
      * @return
      */
@@ -30,28 +31,31 @@ public interface RoleService {
 
     /**
      * 添加菜单
+     *
      * @param roleVo
      */
     void addRole(RoleVo roleVo);
 
     /**
      * 修改菜单
+     *
      * @param roleVo
      */
     void updateRole(RoleVo roleVo);
 
     /**
      * 根据pId查询菜单数量
+     *
      * @param pid
      * @return
      */
     Integer queryRoleByPid(Integer pid);
 
-    
+
     void deleteRole(Integer[] ids);
-    
+
     DataGridView initRoleMenuTreeJson(Integer roleId);
 
     void saveRoleMenu(RoleVo roleVo);
-    
+
 }

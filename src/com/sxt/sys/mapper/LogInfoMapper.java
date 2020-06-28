@@ -19,6 +19,7 @@ public interface LogInfoMapper {
 
     /**
      * 查询日志
+     *
      * @param logInfo
      * @return
      */

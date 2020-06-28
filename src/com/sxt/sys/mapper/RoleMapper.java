@@ -22,11 +22,11 @@ public interface RoleMapper {
      * 查询角色
      */
     List<Role> queryAllRole(Role role);
-    
+
     void deleteRoleByRid(Integer[] ids);
-    
+
     void deleteRoleMenuByRid(Integer[] ids);
-    
+
     void deleteRoleUserByRid(Integer[] ids);
 
     void insertRoleMenu(@Param("roleId") Integer roleId, @Param("mId") Integer mId);

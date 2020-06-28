@@ -11,27 +11,27 @@ public class ResultObj {
      * 添加成功
      */
     public static final ResultObj ADD_SUCCESS = new ResultObj(SysConstant.CODE_SUCCESS, SysConstant.ADD_SUCCESS);
-    
+
     /**
      * 添加失败
      */
     public static final ResultObj ADD_ERROR = new ResultObj(SysConstant.CODE_ERROR, SysConstant.ADD_ERROR);
-    
+
     /**
      * 更新成功
      */
     public static final ResultObj UPDATE_SUCCESS = new ResultObj(SysConstant.CODE_SUCCESS, SysConstant.UPDATE_SUCCESS);
-    
+
     /**
      * 更新失败
      */
     public static final ResultObj UPDATE_ERROR = new ResultObj(SysConstant.CODE_ERROR, SysConstant.UPDATE_ERROR);
-    
+
     /**
      * 删除成功
      */
     public static final ResultObj DELETE_SUCCESS = new ResultObj(SysConstant.CODE_SUCCESS, SysConstant.DELETE_SUCCESS);
-    
+
     /**
      * 删除失败
      */
@@ -61,7 +61,7 @@ public class ResultObj {
      * 状态码 0
      */
     public static final ResultObj STATUS_TRUE = new ResultObj(SysConstant.CODE_SUCCESS);
-    
+
     /**
      * 状态码 -1
      */

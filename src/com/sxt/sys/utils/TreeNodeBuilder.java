@@ -11,6 +11,7 @@ public class TreeNodeBuilder {
 
     /**
      * 把简单的集合转换成有层级关系的集合
+     *
      * @param nodes
      * @param topPid 根节点
      * @return
@@ -33,6 +34,7 @@ public class TreeNodeBuilder {
 
     /**
      * 把list的数据转换成TreeNode的数据
+     *
      * @param list
      * @return
      */
@@ -50,5 +52,5 @@ public class TreeNodeBuilder {
         }
         return nodes;
     }
-    
+
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +13,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="${ctx }/resources/layui/css/layui.css" media="all" />
-    <link rel="stylesheet" href="${ctx }/resources/css/index.css" media="all" />
+    <link rel="stylesheet" href="${ctx }/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="${ctx }/resources/css/index.css" media="all"/>
 </head>
 <body class="main_body">
 <div class="layui-layout layui-layout-admin">
@@ -27,20 +27,30 @@
             <!-- 顶部右侧菜单 -->
             <ul class="layui-nav top_menu">
                 <li class="layui-nav-item" pc>
-                    <a href="javascript:;" class="clearCache"><i class="layui-icon" data-icon="&#xe640;">&#xe640;</i><cite>清除缓存</cite><span class="layui-badge-dot"></span></a>
+                    <a href="javascript:;" class="clearCache"><i class="layui-icon"
+                                                                 data-icon="&#xe640;">&#xe640;</i><cite>清除缓存</cite><span
+                            class="layui-badge-dot"></span></a>
                 </li>
                 <li class="layui-nav-item lockcms" pc>
                     <a href="javascript:;"><i class="seraph icon-lock"></i><cite>锁屏</cite></a>
                 </li>
                 <li class="layui-nav-item" id="userInfo">
-                    <a href="javascript:;"><img src="${ctx }/resources/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">${user.realname }</cite></a>
+                    <a href="javascript:;"><img src="${ctx }/resources/images/face.jpg" class="layui-nav-img userAvatar"
+                                                width="35" height="35"><cite class="adminName">${user.realname }</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="${ctx }/resources/page/user/userInfo.html"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a></dd>
-                        <dd><a href="javascript:;" data-url="${ctx }/resources/page/user/changePwd.html"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
-                        <dd><a href="javascript:;" class="showNotice"><i class="layui-icon">&#xe645;</i><cite>系统公告</cite><span class="layui-badge-dot"></span></a></dd>
-                        <dd pc><a href="javascript:;" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite><span class="layui-badge-dot"></span></a></dd>
-                        <dd pc><a href="javascript:;" class="changeSkin"><i class="layui-icon">&#xe61b;</i><cite>更换皮肤</cite></a></dd>
-                        <dd><a href="page/login/login.html" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="${ctx }/resources/page/user/userInfo.html"><i
+                                class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="${ctx }/resources/page/user/changePwd.html"><i
+                                class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
+                        <dd><a href="javascript:;" class="showNotice"><i
+                                class="layui-icon">&#xe645;</i><cite>系统公告</cite><span
+                                class="layui-badge-dot"></span></a></dd>
+                        <dd pc><a href="javascript:;" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite><span
+                                class="layui-badge-dot"></span></a></dd>
+                        <dd pc><a href="javascript:;" class="changeSkin"><i
+                                class="layui-icon">&#xe61b;</i><cite>更换皮肤</cite></a></dd>
+                        <dd><a href="page/login/login.html" class="signOut"><i
+                                class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
                     </dl>
                 </li>
             </ul>
@@ -49,7 +59,7 @@
     <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
-            <a class="img" title="我的头像" >
+            <a class="img" title="我的头像">
                 <img src="${ctx}/resources/images/face.jpg" class="userAvatar">
             </a>
             <p>你好！<span class="userName">${user.realname }</span>, 欢迎登录</p>
@@ -66,7 +76,8 @@
         <div class="navBar layui-side-scroll" id="navBar">
             <ul class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="${ctx}/desk/toDeskManager.action"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+                    <a href="javascript:;" data-url="${ctx}/desk/toDeskManager.action"><i class="layui-icon"
+                                                                                          data-icon=""></i><cite>后台首页</cite></a>
                 </li>
             </ul>
         </div>
@@ -81,8 +92,10 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;"><i class="layui-icon caozuo">&#xe643;</i> 页面操作</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#xe669;</i> 刷新当前</a></dd>
-                        <dd><a href="javascript:;" class="closePageOther"><i class="seraph icon-prohibit"></i> 关闭其他</a></dd>
+                        <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#xe669;</i>
+                            刷新当前</a></dd>
+                        <dd><a href="javascript:;" class="closePageOther"><i class="seraph icon-prohibit"></i> 关闭其他</a>
+                        </dd>
                         <dd><a href="javascript:;" class="closePageAll"><i class="seraph icon-guanbi"></i> 关闭全部</a></dd>
                     </dl>
                 </li>
@@ -107,36 +120,37 @@
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/cache.js"></script>
 <script type="text/javascript">
-    var $,tab,dataStr,layer;
+    var $, tab, dataStr, layer;
     layui.config({
-        base : "${ctx}/resources/js/"
+        base: "${ctx}/resources/js/"
     }).extend({
-        "bodyTab" : "bodyTab"
+        "bodyTab": "bodyTab"
     })
-    layui.use(['bodyTab','form','element','layer','jquery'],function(){
+    layui.use(['bodyTab', 'form', 'element', 'layer', 'jquery'], function () {
         var form = layui.form,
             element = layui.element;
         $ = layui.$;
         layer = parent.layer === undefined ? layui.layer : top.layer;
         tab = layui.bodyTab({
-            openTabNum : "50",  // 最大可打开窗口数量
-            url : "${ctx}/menu/loadIndexLeftMenuJson.action" // 获取菜单列表的json地址
+            openTabNum: "50",  // 最大可打开窗口数量
+            url: "${ctx}/menu/loadIndexLeftMenuJson.action" // 获取菜单列表的json地址
         });
 
         //通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
-        function getData(json){
-            $.getJSON(tab.tabConfig.url,function(data){
+        function getData(json) {
+            $.getJSON(tab.tabConfig.url, function (data) {
                 dataStr = data;
                 //重新渲染左侧菜单
                 tab.render();
             })
         }
+
         //页面加载时判断左侧菜单是否显示
         //通过顶部菜单获取左侧菜单
-        $(".topLevelMenus li,.mobileTopLevelMenus dd").click(function(){
-            if($(this).parents(".mobileTopLevelMenus").length != "0"){
+        $(".topLevelMenus li,.mobileTopLevelMenus dd").click(function () {
+            if ($(this).parents(".mobileTopLevelMenus").length != "0") {
                 $(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
-            }else{
+            } else {
                 $(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
             }
             $(".layui-layout-admin").removeClass("showMenu");
@@ -147,8 +161,8 @@
         })
 
         //隐藏左侧导航
-        $(".hideMenu").click(function(){
-            if($(".topLevelMenus li.layui-this a").data("url")){
+        $(".hideMenu").click(function () {
+            if ($(".topLevelMenus li.layui-this a").data("url")) {
                 layer.msg("此栏目状态下左侧菜单不可展开");  //主要为了避免左侧显示的内容与顶部菜单不匹配
                 return false;
             }
@@ -161,17 +175,17 @@
         getData("contentManagement");
 
         //手机设备的简单适配
-        $('.site-tree-mobile').on('click', function(){
+        $('.site-tree-mobile').on('click', function () {
             $('body').addClass('site-mobile');
         });
-        $('.site-mobile-shade').on('click', function(){
+        $('.site-mobile-shade').on('click', function () {
             $('body').removeClass('site-mobile');
         });
 
         // 添加新窗口
-        $("body").on("click",".layui-nav .layui-nav-item a:not('.mobileTopLevelMenus .layui-nav-item a')",function(){
+        $("body").on("click", ".layui-nav .layui-nav-item a:not('.mobileTopLevelMenus .layui-nav-item a')", function () {
             //如果不存在子级
-            if($(this).siblings().length == 0){
+            if ($(this).siblings().length == 0) {
                 addTab($(this));
                 $('body').removeClass('site-mobile');  //移动端点击菜单关闭菜单层
             }
@@ -179,18 +193,18 @@
         })
 
         //清除缓存
-        $(".clearCache").click(function(){
+        $(".clearCache").click(function () {
             window.sessionStorage.clear();
             window.localStorage.clear();
-            var index = layer.msg('清除缓存中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
+            var index = layer.msg('清除缓存中，请稍候', {icon: 16, time: false, shade: 0.8});
+            setTimeout(function () {
                 layer.close(index);
                 layer.msg("缓存清除成功！");
-            },1000);
+            }, 1000);
         })
 
         //刷新后还原打开的窗口
-        if(cacheStr == "true") {
+        if (cacheStr == "true") {
             if (window.sessionStorage.getItem("menu") != null) {
                 menu = JSON.parse(window.sessionStorage.getItem("menu"));
                 curmenu = window.sessionStorage.getItem("curmenu");
@@ -225,14 +239,14 @@
                 //渲染顶部窗口
                 tab.tabMove();
             }
-        }else{
+        } else {
             window.sessionStorage.removeItem("menu");
             window.sessionStorage.removeItem("curmenu");
         }
     })
 
     //打开新窗口
-    function addTab(_this){
+    function addTab(_this) {
         tab.tabAdd(_this);
     }
 </script>

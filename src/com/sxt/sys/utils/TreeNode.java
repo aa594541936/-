@@ -8,17 +8,17 @@ import java.util.List;
 public class TreeNode {
 
     private Integer id;
-    
+
     @JsonProperty("parentId")
     private Integer pid;
-    
+
     private String title;
     private String icon;
     private String href;
     private Boolean spread;
     private String target;
     private List<TreeNode> children = new ArrayList<>();
-    
+
     // 复选树的必要属性
     // 选中 1 未选中 0
     private String checkArr = "0";
@@ -26,6 +26,7 @@ public class TreeNode {
 
     /**
      * 首页左边导航栏的构造器
+     *
      * @param id
      * @param pid
      * @param title

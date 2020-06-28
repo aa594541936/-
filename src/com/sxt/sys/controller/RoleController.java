@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/role")
 public class RoleController {
-    
+
     @Autowired
     RoleService roleService;
 
@@ -22,7 +22,7 @@ public class RoleController {
     public DataGridView loadAllRole(RoleVo roleVo) {
         return roleService.queryAllRole(roleVo);
     }
-    
+
     /**
      * 添加角色
      */

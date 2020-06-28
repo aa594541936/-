@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-    
+
     @Autowired
     RoleMapper roleMapper;
 
@@ -75,10 +75,10 @@ public class RoleServiceImpl implements RoleService {
         Menu menu = new Menu();
         menu.setAvailable(SysConstant.AVAILABLE_TRUE);
         List<Menu> allMenu = menuMapper.queryAllMenu(menu);
-        
+
         // 根据角色ID查询当前角色拥有的菜单
         List<Menu> roleMenu = menuMapper.queryMenuByRoleId(roleId, SysConstant.AVAILABLE_TRUE);
-        
+
         List<TreeNode> data = new ArrayList<>();
 
         for (Menu m1 : allMenu) {
@@ -95,20 +95,20 @@ public class RoleServiceImpl implements RoleService {
             Boolean spread = SysConstant.SPREAD_TRUE.equals(m1.getSpread());
             data.add(new TreeNode(id, pid, title, spread, checkArr));
         }
-        
+
         return new DataGridView(data);
     }
 
     @Override
     public void saveRoleMenu(RoleVo roleVo) {
-        
+
         Integer roleId = roleVo.getRoleid();
         Integer[] roleId2 = new Integer[]{roleId};
         Integer[] mIds = roleVo.getIds();
-        
+
         // 每次保存角色和菜单之间的关系之前先把sys_role_menu里面的该角色的所有菜单删除，不然会出现主键冲突
         roleMapper.deleteRoleMenuByRid(roleId2);
-        
+
         // 保存角色和菜单之间的关系
         // 在for循环里面执行SQL不是很好，可以优化
         if (mIds != null) {

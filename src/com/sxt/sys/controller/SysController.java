@@ -18,7 +18,7 @@ public class SysController {
     public String toMenuManager() {
         return "system/menu/menuManager";
     }
-    
+
     /**
      * 跳转菜单管理左边的的菜单树页面
      */
@@ -26,7 +26,7 @@ public class SysController {
     public String toMenuLeft() {
         return "system/menu/menuLeft";
     }
-    
+
     /**
      * 跳转菜单管理右边的菜单列表
      */
@@ -54,6 +54,12 @@ public class SysController {
     @RequestMapping("/toUserManager")
     public String toUserManager() {
         return "system/user/userManager";
+    }
+
+
+    @RequestMapping("toNewsManager")
+    public String toNewsManager() {
+        return "system/news/newsManager";
     }
 
 }

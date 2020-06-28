@@ -25,11 +25,12 @@ public interface MenuMapper {
 
     /**
      * 根据pid查询子菜单数量
+     *
      * @param pid
      * @return
      */
     Integer queryMenuByPid(Integer pid);
-    
+
     void deleteRoleMenuByMid(Integer mid);
 
     List<Menu> queryMenuByRoleId(@Param("roleId") Integer roleId, @Param("availableTrue") Integer availableTrue);

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -59,5 +59,5 @@ public class UserController {
     public DataGridView initUserRole(UserVo userVo) {
         return userService.queryUserRole(userVo.getUserid());
     }
-    
+
 }

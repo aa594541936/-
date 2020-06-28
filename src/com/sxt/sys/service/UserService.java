@@ -10,6 +10,7 @@ public interface UserService {
 
     /**
      * 查询所有用户
+     *
      * @param userVo
      * @return
      */
@@ -17,41 +18,47 @@ public interface UserService {
 
     /**
      * 添加用户
+     *
      * @param userVo
      */
     void addUser(UserVo userVo);
 
     /**
      * 修改用户
+     *
      * @param userVo
      */
     void updateUser(UserVo userVo);
 
     /**
      * 根据id删除用户
+     *
      * @param ids
      */
     void deleteUser(Integer[] ids);
-    
+
     /**
      * 批量删除用户
+     *
      * @param ids
      */
     void deleteBatchUser(Integer[] ids);
 
     /**
      * 重置密码
+     *
      * @param userid
      */
     void resetUserPwd(Integer userid);
 
     /**
-     *  加载用户管理的分配角色的数据
+     * 加载用户管理的分配角色的数据
      */
     DataGridView queryUserRole(Integer userId);
 
     /**
      * 保存用户和角色的关系
+     *
      * @param userVo
      */
     void saveUserRole(UserVo userVo);

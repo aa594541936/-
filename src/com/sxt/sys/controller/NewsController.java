@@ -29,7 +29,7 @@ public class NewsController {
     public ResultObj addNews(NewsVo newsVo) {
         try {
             newsVo.setCreatetime(new Date());
-            User user=(User) WebUtils.getHttpSession().getAttribute("user");
+            User user = (User) WebUtils.getHttpSession().getAttribute("user");
             newsVo.setOpername(user.getRealname());
             this.newsService.addNews(newsVo);
             return ResultObj.ADD_SUCCESS;

@@ -4,19 +4,19 @@ package com.sxt.sys.utils;
  * 为了返回符合dTree数据格式而定义的类
  */
 public class DataGridView {
-    
+
     private Integer code = 0;
-    
+
     private String msg = "";
-    
+
     private Long count;
-    
+
     private Object data;
 
     public DataGridView() {
-        
+
     }
-    
+
     public DataGridView(Object data) {
         super();
         this.data = data;
